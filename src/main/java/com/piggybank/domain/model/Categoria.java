@@ -5,29 +5,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-// Qual a diferença do name da Entity e do name da Table?
-// O que é um schema?
-
-// @Transient não será salvo, será processado durante a chamada;
-
-// crtl + o
-@Getter
-@Setter
-@Entity(name="categoria")
-@Table(name="CATEGORIA", schema="OBJETOS")
+@Data
+@Builder
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Categoria {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="NAME", nullable=false, unique=false)
+	@Column()
 	private String nome;
 	
-	@Column(name="DESCRICAO", nullable=false, unique=false)
+	@Column()
 	private String descricao;
 }

@@ -1,11 +1,9 @@
 package com.piggybank.domain.repository;
 
-import java.util.List;
-
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.piggybank.domain.model.Categoria;
 
-public interface CategoriaRepository extends PagingAndSortingRepository<Categoria, Integer>{
-	List<Categoria> list();
+public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
+	
 }
