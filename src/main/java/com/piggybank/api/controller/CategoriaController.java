@@ -23,12 +23,12 @@ public class CategoriaController {
 	CategoriaRepository categoriaRepository;
 	
 	@GetMapping
-	public List<Categoria> index() {
+	public List<Categoria> list() {
 		return categoriaRepository.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Categoria show(@PathVariable("id") long id) {
+	public Categoria get(@PathVariable("id") long id) {
 		Optional<Categoria> categoriaData = categoriaRepository.findById(id);
 		
 		if (categoriaData.isPresent()) {
@@ -52,19 +52,6 @@ public class CategoriaController {
 		return null;
 	}
 	
-	/*
-	 * 
-	 * @DeleteMapping("/tutorials/{id}")
-  public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
-    try {
-      tutorialRepository.deleteById(id);
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-  }
-	 */
-	
 	@DeleteMapping("/{id}")
 	public String delete(@PathVariable("id") long id) {
 		try {
@@ -76,7 +63,7 @@ public class CategoriaController {
 	}
 	
 	@PostMapping
-    public Categoria store(@RequestBody Categoria categoria){
+    public Categoria save(@RequestBody Categoria categoria){
         return categoriaRepository.save(categoria);
     }
 }
